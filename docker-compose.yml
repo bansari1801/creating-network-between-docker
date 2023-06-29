@@ -1,0 +1,21 @@
+services:
+  calculate:
+    image: bansari18/calculate
+    ports:
+      - '6000:6000'
+    volumes:
+      - ./:/data
+    networks:
+      - bansariNetwork
+
+  validate:
+    image: bansari18/validate
+    volumes:
+      - ./:/data
+    restart: always
+    networks:
+      - bansariNetwork
+networks:
+  bansariNetwork:
+    driver: bridge
+    attachable: true
